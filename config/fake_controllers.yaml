@@ -1,0 +1,60 @@
+controller_list:
+  - name: fake_front_left_foot_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - rev1
+      - rev2
+      - rev3
+      - d_rev1
+      - d_rev2
+      - d_rev3
+  - name: fake_front_right_foot_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - rev4
+      - rev5
+      - rev6
+      - d_rev4
+      - d_rev5
+      - d_rev6
+  - name: fake_middle_left_foot_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - rev7
+      - rev8
+      - rev9
+      - d_rev7
+      - d_rev8
+      - d_rev9
+  - name: fake_middle_right_foot_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - rev10
+      - rev11
+      - rev12
+      - d_rev10
+      - d_rev11
+      - d_rev12
+  - name: fake_end_left_foot_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - rev13
+      - rev14
+      - rev15
+      - d_rev13
+      - d_rev14
+      - d_rev15
+  - name: fake_end_right_foot_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - rev16
+      - rev17
+      - rev18
+      - d_rev16
+      - d_rev17
+      - d_rev18
+initial:  # Define initial robot poses per group
+#  - group: front_left_foot
+#    pose: home
+
+  []

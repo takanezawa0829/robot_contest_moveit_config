@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="spider_robot">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="front_left_foot">
+        <link name="base_link"/>
+        <link name="part1_1"/>
+        <link name="part2_1"/>
+        <link name="part3_1"/>
+        <link name="d_part1_1"/>
+        <link name="d_part2_1"/>
+        <link name="d_part3_1"/>
+        <joint name="rev1"/>
+        <joint name="rev2"/>
+        <joint name="rev3"/>
+        <joint name="d_rev1"/>
+        <joint name="d_rev2"/>
+        <joint name="d_rev3"/>
+        <chain base_link="base_link" tip_link="d_part3_1"/>
+    </group>
+    <group name="front_right_foot">
+        <link name="base_link"/>
+        <link name="part4_1"/>
+        <link name="part5_1"/>
+        <link name="part6_1"/>
+        <link name="d_part4_1"/>
+        <link name="d_part5_1"/>
+        <link name="d_part6_1"/>
+        <joint name="rev4"/>
+        <joint name="rev5"/>
+        <joint name="rev6"/>
+        <joint name="d_rev4"/>
+        <joint name="d_rev5"/>
+        <joint name="d_rev6"/>
+        <chain base_link="base_link" tip_link="d_part6_1"/>
+    </group>
+    <group name="middle_left_foot">
+        <link name="base_link"/>
+        <link name="part7_1"/>
+        <link name="part8_1"/>
+        <link name="part9_1"/>
+        <link name="d_part7_1"/>
+        <link name="d_part8_1"/>
+        <link name="d_part9_1"/>
+        <joint name="rev7"/>
+        <joint name="rev8"/>
+        <joint name="rev9"/>
+        <joint name="d_rev7"/>
+        <joint name="d_rev8"/>
+        <joint name="d_rev9"/>
+        <chain base_link="base_link" tip_link="d_part9_1"/>
+    </group>
+    <group name="middle_right_foot">
+        <link name="base_link"/>
+        <link name="part10_1"/>
+        <link name="part11_1"/>
+        <link name="part12_1"/>
+        <link name="d_part10_1"/>
+        <link name="d_part11_1"/>
+        <link name="d_part12_1"/>
+        <joint name="rev10"/>
+        <joint name="rev11"/>
+        <joint name="rev12"/>
+        <joint name="d_rev10"/>
+        <joint name="d_rev11"/>
+        <joint name="d_rev12"/>
+        <chain base_link="base_link" tip_link="d_part12_1"/>
+    </group>
+    <group name="end_left_foot">
+        <link name="base_link"/>
+        <link name="part13_1"/>
+        <link name="part14_1"/>
+        <link name="part15_1"/>
+        <link name="d_part13_1"/>
+        <link name="d_part14_1"/>
+        <link name="d_part15_1"/>
+        <joint name="rev13"/>
+        <joint name="rev14"/>
+        <joint name="rev15"/>
+        <joint name="d_rev13"/>
+        <joint name="d_rev14"/>
+        <joint name="d_rev15"/>
+        <chain base_link="base_link" tip_link="d_part15_1"/>
+    </group>
+    <group name="end_right_foot">
+        <link name="base_link"/>
+        <link name="part16_1"/>
+        <link name="part17_1"/>
+        <link name="part18_1"/>
+        <link name="d_part16_1"/>
+        <link name="d_part17_1"/>
+        <link name="d_part18_1"/>
+        <joint name="rev16"/>
+        <joint name="rev17"/>
+        <joint name="rev18"/>
+        <joint name="d_rev16"/>
+        <joint name="d_rev17"/>
+        <joint name="d_rev18"/>
+        <chain base_link="base_link" tip_link="d_part18_1"/>
+    </group>
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="base_link" link2="part10_1" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="part13_1" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="part16_1" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="part1_1" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="part4_1" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="part7_1" reason="Adjacent"/>
+    <disable_collisions link1="d_part10_1" link2="d_part11_1" reason="Adjacent"/>
+    <disable_collisions link1="d_part10_1" link2="d_part12_1" reason="Default"/>
+    <disable_collisions link1="d_part10_1" link2="d_part13_1" reason="Never"/>
+    <disable_collisions link1="d_part10_1" link2="d_part14_1" reason="Never"/>
+    <disable_collisions link1="d_part10_1" link2="d_part15_1" reason="Never"/>
+    <disable_collisions link1="d_part10_1" link2="d_part16_1" reason="Never"/>
+    <disable_collisions link1="d_part10_1" link2="d_part17_1" reason="Never"/>
+    <disable_collisions link1="d_part10_1" link2="d_part18_1" reason="Never"/>
+    <disable_collisions link1="d_part10_1" link2="d_part1_1" reason="Never"/>
+    <disable_collisions link1="d_part10_1" link2="d_part2_1" reason="Never"/>
+    <disable_collisions link1="d_part10_1" link2="d_part3_1" reason="Never"/>
+    <disable_collisions link1="d_part10_1" link2="d_part4_1" reason="Never"/>
+    <disable_collisions link1="d_part10_1" link2="d_part5_1" reason="Never"/>
+    <disable_collisions link1="d_part10_1" link2="d_part6_1" reason="Never"/>
+    <disable_collisions link1="d_part10_1" link2="d_part7_1" reason="Never"/>
+    <disable_collisions link1="d_part10_1" link2="d_part8_1" reason="Never"/>
+    <disable_collisions link1="d_part10_1" link2="d_part9_1" reason="Never"/>
+    <disable_collisions link1="d_part10_1" link2="part11_1" reason="Never"/>
+    <disable_collisions link1="d_part10_1" link2="part12_1" reason="Adjacent"/>
+    <disable_collisions link1="d_part10_1" link2="part13_1" reason="Never"/>
+    <disable_collisions link1="d_part10_1" link2="part15_1" reason="Never"/>
+    <disable_collisions link1="d_part10_1" link2="part17_1" reason="Never"/>
+    <disable_collisions link1="d_part10_1" link2="part18_1" reason="Never"/>
+    <disable_collisions link1="d_part10_1" link2="part1_1" reason="Never"/>
+    <disable_collisions link1="d_part10_1" link2="part3_1" reason="Never"/>
+    <disable_collisions link1="d_part11_1" link2="d_part12_1" reason="Adjacent"/>
+    <disable_collisions link1="d_part11_1" link2="d_part13_1" reason="Never"/>
+    <disable_collisions link1="d_part11_1" link2="d_part14_1" reason="Never"/>
+    <disable_collisions link1="d_part11_1" link2="d_part15_1" reason="Never"/>
+    <disable_collisions link1="d_part11_1" link2="d_part16_1" reason="Never"/>
+    <disable_collisions link1="d_part11_1" link2="d_part17_1" reason="Never"/>
+    <disable_collisions link1="d_part11_1" link2="d_part18_1" reason="Never"/>
+    <disable_collisions link1="d_part11_1" link2="d_part1_1" reason="Never"/>
+    <disable_collisions link1="d_part11_1" link2="d_part2_1" reason="Never"/>
+    <disable_collisions link1="d_part11_1" link2="d_part3_1" reason="Never"/>
+    <disable_collisions link1="d_part11_1" link2="d_part4_1" reason="Never"/>
+    <disable_collisions link1="d_part11_1" link2="d_part5_1" reason="Never"/>
+    <disable_collisions link1="d_part11_1" link2="d_part6_1" reason="Never"/>
+    <disable_collisions link1="d_part11_1" link2="d_part7_1" reason="Never"/>
+    <disable_collisions link1="d_part11_1" link2="d_part8_1" reason="Never"/>
+    <disable_collisions link1="d_part11_1" link2="d_part9_1" reason="Never"/>
+    <disable_collisions link1="d_part11_1" link2="part11_1" reason="Never"/>
+    <disable_collisions link1="d_part11_1" link2="part12_1" reason="Default"/>
+    <disable_collisions link1="d_part11_1" link2="part13_1" reason="Never"/>
+    <disable_collisions link1="d_part11_1" link2="part15_1" reason="Never"/>
+    <disable_collisions link1="d_part11_1" link2="part17_1" reason="Never"/>
+    <disable_collisions link1="d_part11_1" link2="part18_1" reason="Never"/>
+    <disable_collisions link1="d_part11_1" link2="part1_1" reason="Never"/>
+    <disable_collisions link1="d_part11_1" link2="part3_1" reason="Never"/>
+    <disable_collisions link1="d_part12_1" link2="d_part13_1" reason="Never"/>
+    <disable_collisions link1="d_part12_1" link2="d_part14_1" reason="Never"/>
+    <disable_collisions link1="d_part12_1" link2="d_part15_1" reason="Never"/>
+    <disable_collisions link1="d_part12_1" link2="d_part16_1" reason="Never"/>
+    <disable_collisions link1="d_part12_1" link2="d_part17_1" reason="Never"/>
+    <disable_collisions link1="d_part12_1" link2="d_part18_1" reason="Never"/>
+    <disable_collisions link1="d_part12_1" link2="d_part1_1" reason="Never"/>
+    <disable_collisions link1="d_part12_1" link2="d_part2_1" reason="Never"/>
+    <disable_collisions link1="d_part12_1" link2="d_part3_1" reason="Never"/>
+    <disable_collisions link1="d_part12_1" link2="d_part4_1" reason="Never"/>
+    <disable_collisions link1="d_part12_1" link2="d_part5_1" reason="Never"/>
+    <disable_collisions link1="d_part12_1" link2="d_part6_1" reason="Never"/>
+    <disable_collisions link1="d_part12_1" link2="d_part7_1" reason="Never"/>
+    <disable_collisions link1="d_part12_1" link2="d_part8_1" reason="Never"/>
+    <disable_collisions link1="d_part12_1" link2="d_part9_1" reason="Never"/>
+    <disable_collisions link1="d_part12_1" link2="part11_1" reason="Never"/>
+    <disable_collisions link1="d_part12_1" link2="part12_1" reason="Default"/>
+    <disable_collisions link1="d_part12_1" link2="part13_1" reason="Never"/>
+    <disable_collisions link1="d_part12_1" link2="part15_1" reason="Never"/>
+    <disable_collisions link1="d_part12_1" link2="part17_1" reason="Never"/>
+    <disable_collisions link1="d_part12_1" link2="part18_1" reason="Never"/>
+    <disable_collisions link1="d_part12_1" link2="part1_1" reason="Never"/>
+    <disable_collisions link1="d_part12_1" link2="part3_1" reason="Never"/>
+    <disable_collisions link1="d_part13_1" link2="d_part14_1" reason="Adjacent"/>
+    <disable_collisions link1="d_part13_1" link2="d_part15_1" reason="Default"/>
+    <disable_collisions link1="d_part13_1" link2="d_part16_1" reason="Never"/>
+    <disable_collisions link1="d_part13_1" link2="d_part17_1" reason="Never"/>
+    <disable_collisions link1="d_part13_1" link2="d_part18_1" reason="Never"/>
+    <disable_collisions link1="d_part13_1" link2="d_part1_1" reason="Never"/>
+    <disable_collisions link1="d_part13_1" link2="d_part2_1" reason="Never"/>
+    <disable_collisions link1="d_part13_1" link2="d_part3_1" reason="Never"/>
+    <disable_collisions link1="d_part13_1" link2="d_part4_1" reason="Never"/>
+    <disable_collisions link1="d_part13_1" link2="d_part5_1" reason="Never"/>
+    <disable_collisions link1="d_part13_1" link2="d_part6_1" reason="Never"/>
+    <disable_collisions link1="d_part13_1" link2="d_part7_1" reason="Never"/>
+    <disable_collisions link1="d_part13_1" link2="d_part8_1" reason="Never"/>
+    <disable_collisions link1="d_part13_1" link2="d_part9_1" reason="Never"/>
+    <disable_collisions link1="d_part13_1" link2="part11_1" reason="Never"/>
+    <disable_collisions link1="d_part13_1" link2="part14_1" reason="Never"/>
+    <disable_collisions link1="d_part13_1" link2="part15_1" reason="Adjacent"/>
+    <disable_collisions link1="d_part13_1" link2="part1_1" reason="Never"/>
+    <disable_collisions link1="d_part13_1" link2="part2_1" reason="Never"/>
+    <disable_collisions link1="d_part13_1" link2="part3_1" reason="Never"/>
+    <disable_collisions link1="d_part13_1" link2="part4_1" reason="Never"/>
+    <disable_collisions link1="d_part13_1" link2="part5_1" reason="Never"/>
+    <disable_collisions link1="d_part13_1" link2="part6_1" reason="Never"/>
+    <disable_collisions link1="d_part14_1" link2="d_part15_1" reason="Adjacent"/>
+    <disable_collisions link1="d_part14_1" link2="d_part16_1" reason="Never"/>
+    <disable_collisions link1="d_part14_1" link2="d_part17_1" reason="Never"/>
+    <disable_collisions link1="d_part14_1" link2="d_part18_1" reason="Never"/>
+    <disable_collisions link1="d_part14_1" link2="d_part1_1" reason="Never"/>
+    <disable_collisions link1="d_part14_1" link2="d_part2_1" reason="Never"/>
+    <disable_collisions link1="d_part14_1" link2="d_part3_1" reason="Never"/>
+    <disable_collisions link1="d_part14_1" link2="d_part4_1" reason="Never"/>
+    <disable_collisions link1="d_part14_1" link2="d_part5_1" reason="Never"/>
+    <disable_collisions link1="d_part14_1" link2="d_part6_1" reason="Never"/>
+    <disable_collisions link1="d_part14_1" link2="d_part7_1" reason="Never"/>
+    <disable_collisions link1="d_part14_1" link2="d_part8_1" reason="Never"/>
+    <disable_collisions link1="d_part14_1" link2="d_part9_1" reason="Never"/>
+    <disable_collisions link1="d_part14_1" link2="part11_1" reason="Never"/>
+    <disable_collisions link1="d_part14_1" link2="part14_1" reason="Never"/>
+    <disable_collisions link1="d_part14_1" link2="part15_1" reason="Default"/>
+    <disable_collisions link1="d_part14_1" link2="part1_1" reason="Never"/>
+    <disable_collisions link1="d_part14_1" link2="part2_1" reason="Never"/>
+    <disable_collisions link1="d_part14_1" link2="part3_1" reason="Never"/>
+    <disable_collisions link1="d_part14_1" link2="part4_1" reason="Never"/>
+    <disable_collisions link1="d_part14_1" link2="part5_1" reason="Never"/>
+    <disable_collisions link1="d_part14_1" link2="part6_1" reason="Never"/>
+    <disable_collisions link1="d_part15_1" link2="d_part16_1" reason="Never"/>
+    <disable_collisions link1="d_part15_1" link2="d_part17_1" reason="Never"/>
+    <disable_collisions link1="d_part15_1" link2="d_part18_1" reason="Never"/>
+    <disable_collisions link1="d_part15_1" link2="d_part1_1" reason="Never"/>
+    <disable_collisions link1="d_part15_1" link2="d_part2_1" reason="Never"/>
+    <disable_collisions link1="d_part15_1" link2="d_part3_1" reason="Never"/>
+    <disable_collisions link1="d_part15_1" link2="d_part4_1" reason="Never"/>
+    <disable_collisions link1="d_part15_1" link2="d_part5_1" reason="Never"/>
+    <disable_collisions link1="d_part15_1" link2="d_part6_1" reason="Never"/>
+    <disable_collisions link1="d_part15_1" link2="d_part7_1" reason="Never"/>
+    <disable_collisions link1="d_part15_1" link2="d_part8_1" reason="Never"/>
+    <disable_collisions link1="d_part15_1" link2="d_part9_1" reason="Never"/>
+    <disable_collisions link1="d_part15_1" link2="part11_1" reason="Never"/>
+    <disable_collisions link1="d_part15_1" link2="part14_1" reason="Never"/>
+    <disable_collisions link1="d_part15_1" link2="part15_1" reason="Default"/>
+    <disable_collisions link1="d_part15_1" link2="part1_1" reason="Never"/>
+    <disable_collisions link1="d_part15_1" link2="part2_1" reason="Never"/>
+    <disable_collisions link1="d_part15_1" link2="part3_1" reason="Never"/>
+    <disable_collisions link1="d_part15_1" link2="part4_1" reason="Never"/>
+    <disable_collisions link1="d_part15_1" link2="part5_1" reason="Never"/>
+    <disable_collisions link1="d_part15_1" link2="part6_1" reason="Never"/>
+    <disable_collisions link1="d_part16_1" link2="d_part17_1" reason="Adjacent"/>
+    <disable_collisions link1="d_part16_1" link2="d_part18_1" reason="Default"/>
+    <disable_collisions link1="d_part16_1" link2="d_part1_1" reason="Never"/>
+    <disable_collisions link1="d_part16_1" link2="d_part2_1" reason="Never"/>
+    <disable_collisions link1="d_part16_1" link2="d_part3_1" reason="Never"/>
+    <disable_collisions link1="d_part16_1" link2="d_part4_1" reason="Never"/>
+    <disable_collisions link1="d_part16_1" link2="d_part5_1" reason="Never"/>
+    <disable_collisions link1="d_part16_1" link2="d_part6_1" reason="Never"/>
+    <disable_collisions link1="d_part16_1" link2="d_part7_1" reason="Never"/>
+    <disable_collisions link1="d_part16_1" link2="d_part8_1" reason="Never"/>
+    <disable_collisions link1="d_part16_1" link2="d_part9_1" reason="Never"/>
+    <disable_collisions link1="d_part16_1" link2="part12_1" reason="Never"/>
+    <disable_collisions link1="d_part16_1" link2="part17_1" reason="Never"/>
+    <disable_collisions link1="d_part16_1" link2="part18_1" reason="Adjacent"/>
+    <disable_collisions link1="d_part16_1" link2="part1_1" reason="Never"/>
+    <disable_collisions link1="d_part16_1" link2="part2_1" reason="Never"/>
+    <disable_collisions link1="d_part16_1" link2="part3_1" reason="Never"/>
+    <disable_collisions link1="d_part16_1" link2="part4_1" reason="Never"/>
+    <disable_collisions link1="d_part16_1" link2="part5_1" reason="Never"/>
+    <disable_collisions link1="d_part16_1" link2="part6_1" reason="Never"/>
+    <disable_collisions link1="d_part16_1" link2="part7_1" reason="Never"/>
+    <disable_collisions link1="d_part16_1" link2="part8_1" reason="Never"/>
+    <disable_collisions link1="d_part17_1" link2="d_part18_1" reason="Adjacent"/>
+    <disable_collisions link1="d_part17_1" link2="d_part1_1" reason="Never"/>
+    <disable_collisions link1="d_part17_1" link2="d_part2_1" reason="Never"/>
+    <disable_collisions link1="d_part17_1" link2="d_part3_1" reason="Never"/>
+    <disable_collisions link1="d_part17_1" link2="d_part4_1" reason="Never"/>
+    <disable_collisions link1="d_part17_1" link2="d_part5_1" reason="Never"/>
+    <disable_collisions link1="d_part17_1" link2="d_part6_1" reason="Never"/>
+    <disable_collisions link1="d_part17_1" link2="d_part7_1" reason="Never"/>
+    <disable_collisions link1="d_part17_1" link2="d_part8_1" reason="Never"/>
+    <disable_collisions link1="d_part17_1" link2="d_part9_1" reason="Never"/>
+    <disable_collisions link1="d_part17_1" link2="part12_1" reason="Never"/>
+    <disable_collisions link1="d_part17_1" link2="part17_1" reason="Never"/>
+    <disable_collisions link1="d_part17_1" link2="part18_1" reason="Default"/>
+    <disable_collisions link1="d_part17_1" link2="part1_1" reason="Never"/>
+    <disable_collisions link1="d_part17_1" link2="part2_1" reason="Never"/>
+    <disable_collisions link1="d_part17_1" link2="part3_1" reason="Never"/>
+    <disable_collisions link1="d_part17_1" link2="part4_1" reason="Never"/>
+    <disable_collisions link1="d_part17_1" link2="part5_1" reason="Never"/>
+    <disable_collisions link1="d_part17_1" link2="part6_1" reason="Never"/>
+    <disable_collisions link1="d_part17_1" link2="part7_1" reason="Never"/>
+    <disable_collisions link1="d_part17_1" link2="part8_1" reason="Never"/>
+    <disable_collisions link1="d_part18_1" link2="d_part1_1" reason="Never"/>
+    <disable_collisions link1="d_part18_1" link2="d_part2_1" reason="Never"/>
+    <disable_collisions link1="d_part18_1" link2="d_part3_1" reason="Never"/>
+    <disable_collisions link1="d_part18_1" link2="d_part4_1" reason="Never"/>
+    <disable_collisions link1="d_part18_1" link2="d_part5_1" reason="Never"/>
+    <disable_collisions link1="d_part18_1" link2="d_part6_1" reason="Never"/>
+    <disable_collisions link1="d_part18_1" link2="d_part7_1" reason="Never"/>
+    <disable_collisions link1="d_part18_1" link2="d_part8_1" reason="Never"/>
+    <disable_collisions link1="d_part18_1" link2="d_part9_1" reason="Never"/>
+    <disable_collisions link1="d_part18_1" link2="part12_1" reason="Never"/>
+    <disable_collisions link1="d_part18_1" link2="part17_1" reason="Never"/>
+    <disable_collisions link1="d_part18_1" link2="part18_1" reason="Default"/>
+    <disable_collisions link1="d_part18_1" link2="part1_1" reason="Never"/>
+    <disable_collisions link1="d_part18_1" link2="part2_1" reason="Never"/>
+    <disable_collisions link1="d_part18_1" link2="part3_1" reason="Never"/>
+    <disable_collisions link1="d_part18_1" link2="part4_1" reason="Never"/>
+    <disable_collisions link1="d_part18_1" link2="part5_1" reason="Never"/>
+    <disable_collisions link1="d_part18_1" link2="part6_1" reason="Never"/>
+    <disable_collisions link1="d_part18_1" link2="part7_1" reason="Never"/>
+    <disable_collisions link1="d_part18_1" link2="part8_1" reason="Never"/>
+    <disable_collisions link1="d_part1_1" link2="d_part2_1" reason="Adjacent"/>
+    <disable_collisions link1="d_part1_1" link2="d_part3_1" reason="Default"/>
+    <disable_collisions link1="d_part1_1" link2="d_part4_1" reason="Never"/>
+    <disable_collisions link1="d_part1_1" link2="d_part5_1" reason="Never"/>
+    <disable_collisions link1="d_part1_1" link2="d_part6_1" reason="Never"/>
+    <disable_collisions link1="d_part1_1" link2="d_part7_1" reason="Never"/>
+    <disable_collisions link1="d_part1_1" link2="d_part8_1" reason="Never"/>
+    <disable_collisions link1="d_part1_1" link2="d_part9_1" reason="Never"/>
+    <disable_collisions link1="d_part1_1" link2="part10_1" reason="Never"/>
+    <disable_collisions link1="d_part1_1" link2="part13_1" reason="Never"/>
+    <disable_collisions link1="d_part1_1" link2="part14_1" reason="Never"/>
+    <disable_collisions link1="d_part1_1" link2="part15_1" reason="Never"/>
+    <disable_collisions link1="d_part1_1" link2="part16_1" reason="Never"/>
+    <disable_collisions link1="d_part1_1" link2="part17_1" reason="Never"/>
+    <disable_collisions link1="d_part1_1" link2="part2_1" reason="Never"/>
+    <disable_collisions link1="d_part1_1" link2="part3_1" reason="Adjacent"/>
+    <disable_collisions link1="d_part2_1" link2="d_part3_1" reason="Adjacent"/>
+    <disable_collisions link1="d_part2_1" link2="d_part4_1" reason="Never"/>
+    <disable_collisions link1="d_part2_1" link2="d_part5_1" reason="Never"/>
+    <disable_collisions link1="d_part2_1" link2="d_part6_1" reason="Never"/>
+    <disable_collisions link1="d_part2_1" link2="d_part7_1" reason="Never"/>
+    <disable_collisions link1="d_part2_1" link2="d_part8_1" reason="Never"/>
+    <disable_collisions link1="d_part2_1" link2="d_part9_1" reason="Never"/>
+    <disable_collisions link1="d_part2_1" link2="part10_1" reason="Never"/>
+    <disable_collisions link1="d_part2_1" link2="part13_1" reason="Never"/>
+    <disable_collisions link1="d_part2_1" link2="part14_1" reason="Never"/>
+    <disable_collisions link1="d_part2_1" link2="part15_1" reason="Never"/>
+    <disable_collisions link1="d_part2_1" link2="part16_1" reason="Never"/>
+    <disable_collisions link1="d_part2_1" link2="part17_1" reason="Never"/>
+    <disable_collisions link1="d_part2_1" link2="part2_1" reason="Never"/>
+    <disable_collisions link1="d_part2_1" link2="part3_1" reason="Default"/>
+    <disable_collisions link1="d_part3_1" link2="d_part4_1" reason="Never"/>
+    <disable_collisions link1="d_part3_1" link2="d_part5_1" reason="Never"/>
+    <disable_collisions link1="d_part3_1" link2="d_part6_1" reason="Never"/>
+    <disable_collisions link1="d_part3_1" link2="d_part7_1" reason="Never"/>
+    <disable_collisions link1="d_part3_1" link2="d_part8_1" reason="Never"/>
+    <disable_collisions link1="d_part3_1" link2="d_part9_1" reason="Never"/>
+    <disable_collisions link1="d_part3_1" link2="part10_1" reason="Never"/>
+    <disable_collisions link1="d_part3_1" link2="part13_1" reason="Never"/>
+    <disable_collisions link1="d_part3_1" link2="part14_1" reason="Never"/>
+    <disable_collisions link1="d_part3_1" link2="part15_1" reason="Never"/>
+    <disable_collisions link1="d_part3_1" link2="part16_1" reason="Never"/>
+    <disable_collisions link1="d_part3_1" link2="part17_1" reason="Never"/>
+    <disable_collisions link1="d_part3_1" link2="part2_1" reason="Never"/>
+    <disable_collisions link1="d_part3_1" link2="part3_1" reason="Default"/>
+    <disable_collisions link1="d_part4_1" link2="d_part5_1" reason="Adjacent"/>
+    <disable_collisions link1="d_part4_1" link2="d_part6_1" reason="Default"/>
+    <disable_collisions link1="d_part4_1" link2="d_part7_1" reason="Never"/>
+    <disable_collisions link1="d_part4_1" link2="d_part8_1" reason="Never"/>
+    <disable_collisions link1="d_part4_1" link2="d_part9_1" reason="Never"/>
+    <disable_collisions link1="d_part4_1" link2="part13_1" reason="Never"/>
+    <disable_collisions link1="d_part4_1" link2="part14_1" reason="Never"/>
+    <disable_collisions link1="d_part4_1" link2="part15_1" reason="Never"/>
+    <disable_collisions link1="d_part4_1" link2="part16_1" reason="Never"/>
+    <disable_collisions link1="d_part4_1" link2="part17_1" reason="Never"/>
+    <disable_collisions link1="d_part4_1" link2="part18_1" reason="Never"/>
+    <disable_collisions link1="d_part4_1" link2="part5_1" reason="Never"/>
+    <disable_collisions link1="d_part4_1" link2="part6_1" reason="Adjacent"/>
+    <disable_collisions link1="d_part4_1" link2="part7_1" reason="Never"/>
+    <disable_collisions link1="d_part4_1" link2="part9_1" reason="Never"/>
+    <disable_collisions link1="d_part5_1" link2="d_part6_1" reason="Adjacent"/>
+    <disable_collisions link1="d_part5_1" link2="d_part7_1" reason="Never"/>
+    <disable_collisions link1="d_part5_1" link2="d_part8_1" reason="Never"/>
+    <disable_collisions link1="d_part5_1" link2="d_part9_1" reason="Never"/>
+    <disable_collisions link1="d_part5_1" link2="part13_1" reason="Never"/>
+    <disable_collisions link1="d_part5_1" link2="part14_1" reason="Never"/>
+    <disable_collisions link1="d_part5_1" link2="part15_1" reason="Never"/>
+    <disable_collisions link1="d_part5_1" link2="part16_1" reason="Never"/>
+    <disable_collisions link1="d_part5_1" link2="part17_1" reason="Never"/>
+    <disable_collisions link1="d_part5_1" link2="part18_1" reason="Never"/>
+    <disable_collisions link1="d_part5_1" link2="part5_1" reason="Never"/>
+    <disable_collisions link1="d_part5_1" link2="part6_1" reason="Default"/>
+    <disable_collisions link1="d_part5_1" link2="part7_1" reason="Never"/>
+    <disable_collisions link1="d_part5_1" link2="part9_1" reason="Never"/>
+    <disable_collisions link1="d_part6_1" link2="d_part7_1" reason="Never"/>
+    <disable_collisions link1="d_part6_1" link2="d_part8_1" reason="Never"/>
+    <disable_collisions link1="d_part6_1" link2="d_part9_1" reason="Never"/>
+    <disable_collisions link1="d_part6_1" link2="part13_1" reason="Never"/>
+    <disable_collisions link1="d_part6_1" link2="part14_1" reason="Never"/>
+    <disable_collisions link1="d_part6_1" link2="part15_1" reason="Never"/>
+    <disable_collisions link1="d_part6_1" link2="part16_1" reason="Never"/>
+    <disable_collisions link1="d_part6_1" link2="part17_1" reason="Never"/>
+    <disable_collisions link1="d_part6_1" link2="part18_1" reason="Never"/>
+    <disable_collisions link1="d_part6_1" link2="part5_1" reason="Never"/>
+    <disable_collisions link1="d_part6_1" link2="part6_1" reason="Default"/>
+    <disable_collisions link1="d_part6_1" link2="part7_1" reason="Never"/>
+    <disable_collisions link1="d_part6_1" link2="part9_1" reason="Never"/>
+    <disable_collisions link1="d_part7_1" link2="d_part8_1" reason="Adjacent"/>
+    <disable_collisions link1="d_part7_1" link2="d_part9_1" reason="Default"/>
+    <disable_collisions link1="d_part7_1" link2="part13_1" reason="Never"/>
+    <disable_collisions link1="d_part7_1" link2="part18_1" reason="Never"/>
+    <disable_collisions link1="d_part7_1" link2="part8_1" reason="Never"/>
+    <disable_collisions link1="d_part7_1" link2="part9_1" reason="Adjacent"/>
+    <disable_collisions link1="d_part8_1" link2="d_part9_1" reason="Adjacent"/>
+    <disable_collisions link1="d_part8_1" link2="part13_1" reason="Never"/>
+    <disable_collisions link1="d_part8_1" link2="part18_1" reason="Never"/>
+    <disable_collisions link1="d_part8_1" link2="part8_1" reason="Never"/>
+    <disable_collisions link1="d_part8_1" link2="part9_1" reason="Default"/>
+    <disable_collisions link1="d_part9_1" link2="part13_1" reason="Never"/>
+    <disable_collisions link1="d_part9_1" link2="part18_1" reason="Never"/>
+    <disable_collisions link1="d_part9_1" link2="part8_1" reason="Never"/>
+    <disable_collisions link1="d_part9_1" link2="part9_1" reason="Default"/>
+    <disable_collisions link1="part10_1" link2="part11_1" reason="Adjacent"/>
+    <disable_collisions link1="part10_1" link2="part13_1" reason="Never"/>
+    <disable_collisions link1="part10_1" link2="part14_1" reason="Never"/>
+    <disable_collisions link1="part10_1" link2="part16_1" reason="Never"/>
+    <disable_collisions link1="part10_1" link2="part1_1" reason="Never"/>
+    <disable_collisions link1="part10_1" link2="part2_1" reason="Never"/>
+    <disable_collisions link1="part10_1" link2="part4_1" reason="Never"/>
+    <disable_collisions link1="part10_1" link2="part7_1" reason="Never"/>
+    <disable_collisions link1="part11_1" link2="part12_1" reason="Adjacent"/>
+    <disable_collisions link1="part11_1" link2="part13_1" reason="Never"/>
+    <disable_collisions link1="part11_1" link2="part1_1" reason="Never"/>
+    <disable_collisions link1="part13_1" link2="part14_1" reason="Adjacent"/>
+    <disable_collisions link1="part13_1" link2="part16_1" reason="Never"/>
+    <disable_collisions link1="part13_1" link2="part1_1" reason="Never"/>
+    <disable_collisions link1="part13_1" link2="part2_1" reason="Never"/>
+    <disable_collisions link1="part13_1" link2="part3_1" reason="Never"/>
+    <disable_collisions link1="part13_1" link2="part4_1" reason="Never"/>
+    <disable_collisions link1="part13_1" link2="part5_1" reason="Never"/>
+    <disable_collisions link1="part13_1" link2="part6_1" reason="Never"/>
+    <disable_collisions link1="part13_1" link2="part7_1" reason="Never"/>
+    <disable_collisions link1="part14_1" link2="part15_1" reason="Adjacent"/>
+    <disable_collisions link1="part14_1" link2="part1_1" reason="Never"/>
+    <disable_collisions link1="part14_1" link2="part2_1" reason="Never"/>
+    <disable_collisions link1="part14_1" link2="part3_1" reason="Never"/>
+    <disable_collisions link1="part14_1" link2="part4_1" reason="Never"/>
+    <disable_collisions link1="part14_1" link2="part5_1" reason="Never"/>
+    <disable_collisions link1="part15_1" link2="part4_1" reason="Never"/>
+    <disable_collisions link1="part15_1" link2="part5_1" reason="Never"/>
+    <disable_collisions link1="part16_1" link2="part17_1" reason="Adjacent"/>
+    <disable_collisions link1="part16_1" link2="part1_1" reason="Never"/>
+    <disable_collisions link1="part16_1" link2="part2_1" reason="Never"/>
+    <disable_collisions link1="part16_1" link2="part3_1" reason="Never"/>
+    <disable_collisions link1="part16_1" link2="part4_1" reason="Never"/>
+    <disable_collisions link1="part16_1" link2="part5_1" reason="Never"/>
+    <disable_collisions link1="part16_1" link2="part7_1" reason="Never"/>
+    <disable_collisions link1="part16_1" link2="part8_1" reason="Never"/>
+    <disable_collisions link1="part17_1" link2="part18_1" reason="Adjacent"/>
+    <disable_collisions link1="part17_1" link2="part1_1" reason="Never"/>
+    <disable_collisions link1="part17_1" link2="part2_1" reason="Never"/>
+    <disable_collisions link1="part17_1" link2="part4_1" reason="Never"/>
+    <disable_collisions link1="part17_1" link2="part5_1" reason="Never"/>
+    <disable_collisions link1="part17_1" link2="part7_1" reason="Never"/>
+    <disable_collisions link1="part18_1" link2="part1_1" reason="Never"/>
+    <disable_collisions link1="part18_1" link2="part2_1" reason="Never"/>
+    <disable_collisions link1="part18_1" link2="part4_1" reason="Never"/>
+    <disable_collisions link1="part18_1" link2="part5_1" reason="Never"/>
+    <disable_collisions link1="part18_1" link2="part6_1" reason="Never"/>
+    <disable_collisions link1="part1_1" link2="part2_1" reason="Adjacent"/>
+    <disable_collisions link1="part1_1" link2="part4_1" reason="Never"/>
+    <disable_collisions link1="part1_1" link2="part7_1" reason="Never"/>
+    <disable_collisions link1="part2_1" link2="part3_1" reason="Adjacent"/>
+    <disable_collisions link1="part4_1" link2="part5_1" reason="Adjacent"/>
+    <disable_collisions link1="part4_1" link2="part7_1" reason="Never"/>
+    <disable_collisions link1="part4_1" link2="part8_1" reason="Never"/>
+    <disable_collisions link1="part5_1" link2="part6_1" reason="Adjacent"/>
+    <disable_collisions link1="part5_1" link2="part7_1" reason="Never"/>
+    <disable_collisions link1="part7_1" link2="part8_1" reason="Adjacent"/>
+    <disable_collisions link1="part8_1" link2="part9_1" reason="Adjacent"/>
+</robot>

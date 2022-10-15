@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: robot_contest
+    relative_path: urdf/spider_robot.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/spider_robot.srdf
+  CONFIG:
+    author_name: TakumuTakanezawa
+    author_email: s20c1066ab@s.chibakoudai.jp
+    generated_timestamp: 1665845463
